@@ -10,10 +10,10 @@ const historia = [
 ];
 
 const pranchas = [
-  { nome: "Longboard", altura: 230, largura: 52, cor: "#e4502f", texto: "Cerca de 9 pés ou mais. Estável, boa para ondas pequenas." },
-  { nome: "Funboard", altura: 195, largura: 52, cor: "#f4b942", texto: "Entre 7 e 8 pés. Boa transição para quem está evoluindo." },
-  { nome: "Fish", altura: 150, largura: 56, cor: "#1b4f8f", texto: "Curta e larga. Ganha velocidade em ondas mais fracas." },
-  { nome: "Shortboard", altura: 165, largura: 44, cor: "#6f9e63", texto: "Em geral de 5 a 6 pés e meio. Ágil, pede experiência." },
+  { nome: "Longboard", altura: 230, largura: 52, cor: "#ff5a4e", texto: "Cerca de 9 pés ou mais. Estável, boa para ondas pequenas." },
+  { nome: "Funboard", altura: 195, largura: 52, cor: "#ffc93c", texto: "Entre 7 e 8 pés. Boa transição para quem está evoluindo." },
+  { nome: "Fish", altura: 150, largura: 56, cor: "#0b7fb0", texto: "Curta e larga. Ganha velocidade em ondas mais fracas." },
+  { nome: "Shortboard", altura: 165, largura: 44, cor: "#1fb89a", texto: "Em geral de 5 a 6 pés e meio. Ágil, pede experiência." },
 ];
 
 const termos = [
@@ -52,7 +52,7 @@ export default function Surf() {
             <div key={nome}>
               <svg viewBox="0 0 70 230" aria-hidden="true">
                 <path fill={cor} d={`M35 ${230 - altura}C${35 + largura} ${230 - altura * 0.65} ${35 + largura / 2} 215 35 230C${35 - largura / 2} 215 ${35 - largura} ${230 - altura * 0.65} 35 ${230 - altura}Z`} />
-                <path stroke="#fbf5e9" strokeWidth="2" d={`M35 ${234 - altura}V226`} />
+                <path stroke="#fffaf0" strokeWidth="2" d={`M35 ${234 - altura}V226`} />
               </svg>
               <h3>{nome}</h3>
               <p>{texto}</p>

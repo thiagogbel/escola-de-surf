@@ -16,13 +16,14 @@ export default function Inicio() {
           <Link className="botao" to="/aulas">Ver as aulas</Link>
         </div>
         <div className="cena">
+          <div className="raios" />
           <div className="sol" />
           <img src="/surfista-2.png" alt="Silhueta de surfista sobre a prancha" />
         </div>
         <svg className="ondas" viewBox="0 0 1600 150" preserveAspectRatio="none" aria-hidden="true">
-          <path fill="#3d78b8" d={onda(50)} />
-          <path fill="#8fc1d4" d={onda(80)} />
-          <path fill="#fbf5e9" d={onda(115)} />
+          <path fill="var(--onda1)" d={onda(50)} />
+          <path fill="var(--onda2)" d={onda(80)} />
+          <path fill="var(--papel)" d={onda(115)} />
         </svg>
       </section>
       <section>
@@ -35,9 +36,10 @@ export default function Inicio() {
           <h2>Surf não é só ficar em pé</h2>
           <p>Tem história, regra de convivência, prancha certa para cada onda e um vocabulário próprio.</p>
           <p><Link to="/surf">Conheça o surf</Link></p>
+          <p><Link to="/aprenda">Aprenda como as ondas funcionam</Link></p>
           <p><Link to="/seguranca">Veja os cuidados no mar</Link></p>
         </div>
-        <img src="/surfista-1.png" alt="Silhueta de surfista descendo uma onda" />
+        <img src="/surfista-1.png" alt="Galo surfando em uma prancha verde" />
       </section>
     </>
   );

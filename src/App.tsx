@@ -7,6 +7,7 @@ import DetalheAula from "./pages/DetalheAula";
 import Seguranca from "./pages/Seguranca";
 import FormInscricao from "./pages/FormInscricao";
 import Inscritos from "./pages/Inscritos";
+import Aprenda from "./pages/Aprenda";
 import Surf from "./pages/Surf";
 import Transicao from "./Transicao";
 import Termos from "./pages/Termos";
@@ -19,12 +20,19 @@ function carregar(): Inscricao[] {
 export default function App() {
   const [inscricoes, setInscricoes] = useState<Inscricao[]>(carregar);
   const [menuAberto, setMenuAberto] = useState(false);
+  const [claro, setClaro] = useState(() => localStorage.getItem("tema") === "claro"); // escuro é o padrão
   const { pathname } = useLocation();
 
   // Salva no navegador sempre que a lista muda
   useEffect(() => {
     localStorage.setItem("inscricoes", JSON.stringify(inscricoes));
   }, [inscricoes]);
+
+  // Aplica o tema na página e guarda a escolha
+  useEffect(() => {
+    document.documentElement.dataset.tema = claro ? "claro" : "escuro";
+    localStorage.setItem("tema", claro ? "claro" : "escuro");
+  }, [claro]);
 
   // Volta ao topo ao trocar de tela
   useEffect(() => {
@@ -40,10 +48,12 @@ export default function App() {
           <NavLink to="/">Início</NavLink>
           <NavLink to="/aulas">Aulas</NavLink>
           <NavLink to="/surf">O surf</NavLink>
+          <NavLink to="/aprenda">Aprenda</NavLink>
           <NavLink to="/seguranca">Segurança</NavLink>
           <NavLink to="/inscricao">Inscrição</NavLink>
           <NavLink to="/inscritos">Inscritos ({inscricoes.length})</NavLink>
         </nav>
+        <button id="btnTema" onClick={() => setClaro(!claro)}>{claro ? "🌙 Modo escuro" : "☀️ Modo claro"}</button>
       </header>
       <main>
         <Transicao><Routes>
@@ -51,6 +61,7 @@ export default function App() {
           <Route path="/aulas" element={<Aulas />} />
           <Route path="/aulas/:id" element={<DetalheAula />} />
           <Route path="/surf" element={<Surf />} />
+          <Route path="/aprenda" element={<Aprenda />} />
           <Route path="/seguranca" element={<Seguranca />} />
           <Route path="/inscricao" element={<FormInscricao aoInscrever={nova => setInscricoes(l => [...l, nova])} />} />
           <Route path="/inscritos" element={<Inscritos lista={inscricoes} aoRemover={id => setInscricoes(l => l.filter(i => i.id !== id))} />} />
